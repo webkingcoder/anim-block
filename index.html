@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Animation</title>
+</head>
+<body>
+    <div class="container">
+            <h1><span>Webking-Coder</span></h1>
+    </div>
+    <script src="anime.min.js"></script>
+    <script>
+        let container = document.querySelector('.container')
+        for(let i=0;i<=100;i++){
+            let block = document.createElement('div')
+            block.classList.add("block")
+            container.appendChild(block)
+        }
+        function blockanim(){
+            anime({
+                targets:'.block',
+                translateX: function(){
+                    return anime.random(-600,600)
+                },
+                translateY: function(){
+                    return anime.random(-400,400)
+                },
+                scale: function(){
+                    return anime.random(1,5)
+                },
+                rotate : function(){
+                    return anime.random(0,50)
+                },
+                easing:'linear',
+                duration:2000,
+                delay: anime.stagger(20),
+                complete:blockanim
+            })
+        }
+        blockanim();
+    </script>
+</body>
+</html>
